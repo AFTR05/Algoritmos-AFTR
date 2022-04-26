@@ -1,0 +1,8 @@
+#titulo{
+    display: inline-block;
+    position: relative;
+}
+
+#text{
+    font-size: 100px;
+}
