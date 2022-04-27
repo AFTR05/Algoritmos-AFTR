@@ -22,63 +22,52 @@ formulario.addEventListener("submit",conservar=(e)=>{
     console.log("funciona")
     array_product=[cantidadegg.value,cantidadmilk.value,cantidadpan.value,cantidadfruit.value]
     console.log(array_product)
-
-    
-    //descuento
-    let descuento=0
-    let band=false
-    let resultado_descuento
-    let sumarreglo
-    function creacion_descuento(){
-        let descuento = parseInt(Math.random() * (100 - 1) + 1);
-        console.log(band) ;
-        if (band==false) {
-            resultado_descuento=descuento/100;
-            let espacio=document.getElementById('espacioimp')
-            espacio.innerHTML=`Felicidades tiene un descuento de ${descuento}% que se hara efectivo en su compra `;
-            band=true
-            
-        } else {
-            alert(`Opa ya tienes un descuento, suerte en la proxima`)
+    let impri=document.getElementById("espacioresul")
+    console.log(resultado_descuento)
+    function valor_total() {    //se encarga de hacer las operaciones 
+        let valorhuevos=15000;
+        let valorleche=3500;
+        let valorpan=2000;
+        let valorfruta=5000;
+        let valor=[valorhuevos,valorleche,valorpan,valorfruta]        
+        let resultadopago=[]
+        for (let i = 0; i < 4; i++) {
+        resultadopago[i]=parseInt(array_product[i]*valor[i])
         }
-    
-    }   
-    let boton=document.getElementById("boton")
-    boton.addEventListener('click',creacion_descuento)
-    
-    
-    function valor_total() {
-            let valorhuevos=15000;
-            let valorleche=3500;
-            let valorpan=2000;
-            let valorfruta=5000;
-            let valor=[valorhuevos,valorleche,valorpan,valorfruta]
-            
-
-            let resultadopago=[]
-
-            for (let i = 0; i < 4; i++) {
-                resultadopago[i]=array_product[i]*valor[i]
-            }
-            console.log(resultadopago)
-            for (let i = 0; i < 4; i++) {
-                sumarreglo+=resultadopago[i];
-                console.log(sumarreglo)
-                let multides=parseInt(resultado_descuento*sumarreglo);
-                console.log(multides)
-                let pagodes=parseInt(sumarreglo-multides);
-                console.log(pagodes)
-                alert(`El valor a pagar es $${pagodes}`)
-                
-            } 
-        }
-        let boton_envio=document.getElementById("send-button")
-        boton_envio.addEventListener('click',valor_total)
-   
+        for (let i = 0; i < 4; i++) {
+        sumarreglo+=resultadopago[i];               
+        } 
+        let multides=parseInt(resultado_descuento*sumarreglo);
+        console.log(multides)
+        let pagodes=parseInt(sumarreglo-multides);
+        console.log(pagodes)               
+     impri.innerHTML=`El valor a pagar es $${pagodes}`
+    }
+    let boton2=document.getElementById("boton2")
+    boton2.addEventListener('click',valor_total())
 })
 
-
-
+    let descuento=0
+    let band=false
+    let resultado_descuento=0
+    let sumarreglo=0
+    //descuento
+function creacion_descuento(){
+    let descuento = parseInt(Math.random() * (100 - 1) + 1);
+    console.log(band) ;
+    if (band==false) {
+        resultado_descuento=descuento/100;
+        let espacio=document.getElementById('espacioimp')
+        espacio.innerHTML=`Felicidades tiene un descuento de ${descuento}% que se hara efectivo en su compra `;
+        band=true
+        
+    } else {
+        alert(`Opa ya tienes un descuento, suerte en la proxima`)
+    }
+    console.log(resultado_descuento)
+    }   
+let boton=document.getElementById("boton")
+boton.addEventListener('click',creacion_descuento)
 
 
 

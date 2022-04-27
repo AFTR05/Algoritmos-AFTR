@@ -8,21 +8,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1><center>Bienvenido a tienda</center></h1>
-    <h4>Añade un producto</h4>
-    <form method="get" id="formulario"> 
-        <label for="huevos">Huevos</label>  <input name="cantidadhuevos" id="cantidadegg" type="number" min="1" max="30"><br>
+    <h1><center>Bienvenido a tienda de Mari</center></h1>
+    <h4 id="hola">Añade un producto</h4>
+    <form id="formulario"> 
+        <label for="huevos">Huevos</label>  <input name="cantidadhuevos" id="cantidadegg" type="number" min=1 max=30> <br>
         <label for="leche">Leche</label> <input name="cantidadleche" id="cantidadmilk" type="number" min=1 max=20><br>
         <label for="pan">Pan</label> <input name="cantidadpan" id="cantidadpan" type="number" min=1 max=50 ><br>
         <label for="fruta">Fruta</label> <input name="cantidadfruta" id="cantidadfruit" type="number" min=1 max=50><br>
         <br>
-        <input type="submit" id="send-button" name="send-button" class="button">
+        <button type="submit" id="boton2" >Enviar</button>
         <input type="reset" value="Borrar" class="button">
        
     </form>
     
-    <button >Quieres ganar un descuento presiona aqui!</button>
+    <button id="boton" >Quieres ganar un descuento presiona aqui!</button>
     <p id="espacioimp"></p>
+    <p id="espacioresul"></p>
     <script src="js/codigo.js"></script>
     <div> <!-- //para todo lo que quiera imprimir del valor total o quisas solo hacer un alert -->
 
