@@ -40,7 +40,8 @@ formulario.addEventListener("submit",conservar=(e)=>{
         let multides=parseInt(resultado_descuento*sumarreglo);
         console.log(multides)
         let pagodes=parseInt(sumarreglo-multides);
-        console.log(pagodes)               
+        console.log(pagodes)
+        sumarreglo=0               
      impri.innerHTML=`El valor a pagar es $${pagodes}`
     }
     let boton2=document.getElementById("boton2")
