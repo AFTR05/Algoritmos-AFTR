@@ -15,6 +15,8 @@ const cantidadfruit=document.getElementById('cantidadfruit')
 const cantidadpan=document.getElementById('cantidadpan')
 const cantidadmilk=document.getElementById('cantidadmilk')
 
+
+
 let array_product;
 let formulario=document.getElementById('formulario');
 formulario.addEventListener("submit",conservar=(e)=>{
@@ -48,11 +50,27 @@ formulario.addEventListener("submit",conservar=(e)=>{
     boton2.addEventListener('click',valor_total())
 })
 
-    let descuento=0
-    let band=false
-    let resultado_descuento=0
-    let sumarreglo=0
-    //descuento
+// let limit=[30,20,50,50]          posible estructura para limites para futuro 
+// function limites(){
+//     array_canti=[cantidadegg.value,cantidadmilk.value,cantidadpan.value,cantidadfruit.value]
+//     for (let i = 0; i < 4; i++) {
+//         limit[i]=limit[i]-array_canti[i];
+//     }  
+    
+//     cantidadegg.setAttribute('max', limit[0])
+//     cantidadegg.getAttribute('max')
+//     cantidadmilk.setAttribute('max', limit[1])
+//     cantidadpan.setAttribute('max', limit[2])
+//     cantidadfruit.setAttribute('max', limit[3])
+// }
+//     boton2.addEventListener('click',limites())
+
+
+let descuento=0
+let band=false
+let resultado_descuento=0
+let sumarreglo=0
+   //descuento
 function creacion_descuento(){
     let descuento = parseInt(Math.random() * (100 - 1) + 1);
     console.log(band) ;

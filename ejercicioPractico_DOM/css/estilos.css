@@ -1,0 +1,10 @@
+#holap{
+    justify-content: center;
+}
+
+form{
+    display: inline-flexbox;
+    justify-content: center;
+}
+
+
