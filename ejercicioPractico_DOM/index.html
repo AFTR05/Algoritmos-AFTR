@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' type='text/css' media='screen' href='css/estilos.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Open+Sans:wght@300&family=Square+Peg&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
-    <h1><center>Bienvenido a tienda de Mari</center></h1>
-    <h4 id="hola">Añade un producto</h4> 
-    <form id="formulario"> 
-            
-        <label for="huevos">Huevos</label>  <input name="cantidadhuevos" id="cantidadegg" type="number" min=1 max=30> <br>
-        <label for="leche">Leche</label> <input name="cantidadleche" id="cantidadmilk" type="number" min=1 max=20><br>
-        <label for="pan">Pan</label> <input name="cantidadpan" id="cantidadpan" type="number" min=1 max=50 ><br>
-        <label for="fruta">Fruta</label> <input name="cantidadfruta" id="cantidadfruit" type="number" min=1 max=50><br>
-        <br>
-        <button type="submit" id="boton2" >Enviar</button>
-        <input type="reset" value="Borrar" class="button">       
-    </form>
-    
-    <button id="boton" >Quieres ganar un descuento presiona aqui!</button>
-    <p id="espacioimp"></p>
-    <p id="espacioresul"></p>
-    <script src="js/codigo.js"></script>
-         <!-- //para todo lo que quiera imprimir del valor total o quisas solo hacer un alert -->
 
-    
+<body>
+    <div id="all">
+        <h1>
+            <center>Bienvenido a tienda de Mari</center>
+        </h1>
+
+        <h4 id="hola">
+            <center>Añade un producto</center>
+        </h4>
+
+        <div id="Mari">
+            <div id="contenido">
+
+
+                <div class="cuadro">
+                    <form id="formulario">
+                        <div id="contenidoproduct">
+                            <div class="informulario">
+                                <img src="http://assets.stickpng.com/images/580b57fbd9996e24bc43c101.png">
+                                <label for="huevos">Huevos</label>
+                                <input name="cantidadhuevos" id="cantidadegg" type="number" min=1 max=30> <br>
+                                <img
+                                    src="https://images.vexels.com/media/users/3/160371/isolated/preview/6c40e6ebea6870c673bc72d8f215724d-ilustracion-de-vaca-de-leche-de-caja-de-leche.png">
+                                <label for="leche">Leche</label>
+                                <input name="cantidadleche" id="cantidadmilk" type="number" min=1 max=20><br>
+                            </div>
+                            <div class="informulario">
+                                <img src="https://pngimg.com/uploads/bread/bread_PNG2233.png">
+                                <label for="pan">Pan</label>
+                                <input name="cantidadpan" id="cantidadpan" type="number" min=1 max=50><br>
+                                <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c161.png">
+                                <label for="fruta" class="info">Fruta</label>
+                                <input name="cantidadfruta" id="cantidadfruit" type="number" min=1 max=50><br>
+                            </div>
+                        </div>
+
+
+                        <div id="botoninfo">
+                            <button type="submit" id="boton2" class="button">Enviar</button>
+                            <input type="reset" value="Borrar" class="button">
+                        </div>
+                    </form>
+                </div>
+
+                <div id="impresion" class="cuadro">
+                    <button id="boton">Quieres ganar un descuento presiona aqui!</button>
+                </div>
+                <div id="lucas">
+                    <div id="impr" class="cuadro">
+                        <p id="espacioimp" class="texto"></p>
+                        <p id="espacioresul" class="texto"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/codigo.js"></script>
+
+
 </body>
+
 </html>

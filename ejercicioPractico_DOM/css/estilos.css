@@ -1,10 +1,108 @@
-#holap{
-    justify-content: center;
-}
-
-form{
-    display: inline-flexbox;
-    justify-content: center;
+*{
+    font-family:'Lato', sans-serif;;
 }
 
 
+body{
+    display: flex;
+    justify-content: center;
+    background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20220314/pngtree-supermarket-convenience-store-environment-commodity-arrangement-shopping-material-image_1050215.jpg");
+}
+
+#all{
+    width: 75%;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+#contenido{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#formulario{
+    display: flex;
+    flex-direction: column;
+    border: 5px solid transparent;
+    width: 100%;
+}
+
+#contenidoproduct{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#botoninfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+
+}
+
+.cuadro{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: aliceblue;
+    
+}
+
+
+.informulario{
+    display: flex;
+    flex-direction: column;
+}
+
+.texto{
+    justify-content: center;
+}
+
+#mensaje{
+    display: flex;
+    justify-content: center;
+
+}
+
+#impresion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+
+}
+
+#impr{
+    display: flex;
+    flex-direction: column;
+    padding-left: 25%;
+}
+
+
+
+
+img{
+    max-width: 100%;
+    width: 200px;
+    justify-content: center;
+}
+
+input{
+    width: 50px;
+}
+
+.button{
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+#boton{
+    width: 190px;
+    height: 100px;
+
+}
