@@ -1,5 +1,5 @@
 *{
-    font-family:'Lato', sans-serif;;
+    font-family: 'Lato', sans-serif;;
 }
 
 
@@ -73,14 +73,17 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+}
 
+#lucas{
+    display: flex;
+    justify-content: center;
 }
 
 #impr{
     display: flex;
     flex-direction: column;
-    padding-left: 25%;
+    
 }
 
 
