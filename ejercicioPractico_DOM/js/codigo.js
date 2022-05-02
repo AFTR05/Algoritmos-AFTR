@@ -15,8 +15,6 @@ const cantidadfruit=document.getElementById('cantidadfruit')
 const cantidadpan=document.getElementById('cantidadpan')
 const cantidadmilk=document.getElementById('cantidadmilk')
 
-
-
 let array_product;
 let formulario=document.getElementById('formulario');
 formulario.addEventListener("submit",conservar=(e)=>{
