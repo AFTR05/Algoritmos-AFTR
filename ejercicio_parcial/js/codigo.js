@@ -24,29 +24,39 @@ while (option !== 0) {
     array_notas[i] = nota;
 }
 
-let p=parseInt(prompt(`Digite una opcion
-1:mayor de estudiantes
-2: busqueda nombre
-3:promedio
-4: datos totales`))
-switch (p) {
-    case 1:
-        mayor();
-        break;
-    case 2:
-        busqueda();
-        break;
-    case 3:
-        promedio();
-        break;
-    case 4:
-        total();
-        break;
-    default:
-        break;
+let p;
+whi:
+while (p != 0) {
+    let p = parseInt(prompt(`Digite una opcion
+    1:mayor de estudiantes
+    2: busqueda nombre
+    3:promedio
+    4: datos totales
+    0:Salir menu`))
+    switch (p) {
+        case 1:
+            mayor();
+            break;
+        case 2:
+            busqueda();
+            break;
+        case 3:
+            promedio();
+            break;
+        case 4:
+            total();
+            break;
+
+        case 0:
+            break whi;    
+        default:
+            break;
+    }
 }
 
+
 function mayor() {
+    alert('MAyor')
     let mayor = false;
     for (let i = 0; i <= array_notas.length; i++) {
 
@@ -101,7 +111,7 @@ function busqueda() {
 function promedio() {
     let sum;
     for (let i = 0; i <= array_notas.length; i++) {
-        sum = sum + array_notas[i];
+        sum = sum + parseInt(array_notas[i]);
         console.log(sum)
     }
 
