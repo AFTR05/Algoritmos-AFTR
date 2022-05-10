@@ -75,6 +75,19 @@ function total() {
 }
 
 botonenvio.addEventListener('click',llenado_array)
+
+
+// botonenvio.onclick= function llenado() {
+//     array[0][cantidad]=estudiantes.value;
+//     console.log(array[0][cantidad])
+//     array[1][cantidad]=notas.value;
+//     console.log(array[1][cantidad])
+//     cantidad++;
+//     console.log(cantidad)
+// }
+
+
+
 botonbusque.addEventListener('click',busquedaestu)
 botonmay.addEventListener('click',mayor)
 botonprom.addEventListener('click',promedio)
