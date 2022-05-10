@@ -8,6 +8,14 @@ let botonmay=document.getElementById('botonmay')
 let botontotal=document.getElementById('botontotal')
 let cantidad=0;
 
+
+botonenvio.addEventListener('click',llenado_array)
+botonbusque.addEventListener('click',busquedaestu)
+botonmay.addEventListener('click',mayor)
+botonprom.addEventListener('click',promedio)
+botontotal.addEventListener('click',total)
+
+
 function llenado_array() {
     array[0][cantidad]=estudiantes.value;
     console.log(array[0][cantidad])
@@ -20,6 +28,7 @@ function llenado_array() {
 
 console.log(cantidad)
 console.log(array[1][cantidad])
+
 
 function mayor() {
     let mayor = false;
@@ -74,7 +83,7 @@ function total() {
     }
 }
 
-botonenvio.addEventListener('click',llenado_array)
+
 
 
 // botonenvio.onclick= function llenado() {
@@ -87,8 +96,3 @@ botonenvio.addEventListener('click',llenado_array)
 // }
 
 
-
-botonbusque.addEventListener('click',busquedaestu)
-botonmay.addEventListener('click',mayor)
-botonprom.addEventListener('click',promedio)
-botontotal.addEventListener('click',total)

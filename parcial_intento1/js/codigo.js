@@ -1,6 +1,8 @@
 // lo que se busca hacer con eset ejercicio es pedir la cantidad de estudiantes, y deacuerdo a ello crear diferentes inputs para que el usuario los llene, y se logre adquirir los datos
 
-
+let espaciomayor=document.getElementById('espaciomay')
+let espacioprom=document.getElementById('espacioprom')
+let espaciobusqueda=document.getElementById('espaciobusque')
 let cantidad_estudiantes = parseInt(prompt('Digite la cantidad de estudiantes'))
 
 for (let i = 0; i < cantidad_estudiantes; i++) {
@@ -57,6 +59,7 @@ formulario.addEventListener("submit", conservar = (e) => {        //funcion de p
             }
         }
         console.log(mayorvar)
+        espaciomayor.innerHTML=`La nota mayor fue ${mayorvar} con una frecuencia total de ${array[1].length}, los estudiantes que sacaron esta nota fueron ${estumayor}`
     }
 
 
@@ -64,10 +67,10 @@ formulario.addEventListener("submit", conservar = (e) => {        //funcion de p
         let nombre = prompt("Digite el nombre del estudiante").toUpperCase();
         for (let j = 0; j < cantidad_estudiantes; j++) {
             if (nombre == (array[0][j].toUpperCase())) {
-                alert(`El estudiante ${array[0][j]} tiene una nota de ${array[1][j]}`)
+                espaciobusqueda.innerHTML=`El estudiante ${array[0][j]} tiene una nota de ${array[1][j]}`
                 break;
             } else if (nombre !== array[0][j].toUpperCase() && j == cantidad_estudiantes - 1) {
-                alert(`No se encuentra el estudiante de nombre: ${nombre}`)
+                espaciobusqueda.innerHTML=`No se encuentra el estudiante de nombre: ${nombre}`
             }
         }
     }
@@ -82,13 +85,17 @@ formulario.addEventListener("submit", conservar = (e) => {        //funcion de p
 
         let resultado = sum / cantidad_estudiantes;
 
-        alert(`El promedio de notas del curso es ${resultado}`)
+        espacioprom.innerHTML=`El promedio de notas del curso es ${resultado}`
     }
 
-
+const divtotal=document.getElementById('totaldiv')
     function total() {
         for (let j = 0; j < cantidad_estudiantes; j++) {
-            alert(`${array[0][j]}---------${array[1][j]}`)
+            let space=document.createElement('p')
+            space.setAttribute('id',`tt${j}`)
+            divtotal.appendChild(space)
+            let SPACE=document.getElementById(`tt${j}`)
+            SPACE.innerHTML=` <br> ${array[0][j]}---------${array[1][j]} <br>`
         }
     }
 })
