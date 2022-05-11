@@ -11,9 +11,13 @@ for (let i = 0; i < cantidad_estudiantes; i++) {
 
     let inputestu = document.createElement('input')          //creacion de inputs
     inputestu.setAttribute('id', `estudiantes${i}`);
+    inputestu.setAttribute('placeholder', `estudiante${i+1}`);
+    inputestu.setAttribute('class', `inputXD`);
     //nota mental nunca puedes crear etiquetas y colocar atributos a las vez por que o si no, no toma como nodo la direccion
     let inputnot = document.createElement('input')
     inputnot.setAttribute('id', `notas${i}`);
+    inputnot.setAttribute('placeholder', `nota ${i+1}`);
+    inputnot.setAttribute('class', `inputXD`);
     estudiantes.appendChild(inputestu);                       //localizacion de inputs
     notas.appendChild(inputnot);
 }
@@ -88,7 +92,7 @@ formulario.addEventListener("submit", conservar = (e) => {        //funcion de p
         espacioprom.innerHTML=`El promedio de notas del curso es ${resultado}`
     }
 
-const divtotal=document.getElementById('totaldiv')
+const divtotal=document.getElementById('lucas')
     function total() {
         for (let j = 0; j < cantidad_estudiantes; j++) {
             let space=document.createElement('p')

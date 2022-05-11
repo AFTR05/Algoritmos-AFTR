@@ -5,44 +5,80 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Open+Sans:wght@300&family=Square+Peg&display=swap" rel="stylesheet">
     <title>Parcial con creacion input</title>
 </head>
 
 <body>
-    <h1>Notas del parcial NOSE</h1>
-    <form id="formulario">
-        <div id="nombres">
-            <h3>Nombres</h3>
-
-
+    <div id="all">
+        <div class="titulo">
+            <h1>Notas del parcial NOSE</h1>
         </div>
 
-        <div id="notas">
-            <h3>Notas</h3>
+        <form id="formulario">
+            <div id="cajaform">
+                <div id="XDotracaja">
+                    <div id="nombres" class="mari">
+
+                        <!-- nombres -->
+
+
+
+
+                    </div>
+
+                    <div id="notas" class="mari">
+
+                        <!-- notas -->
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+            <br>
+            <div class="titulo">
+                <input type="submit" value="Enviar">
+            </div>
+
+        </form>
+
+
+        <div id="botones">
+            <div class="empanada">
+                <div class="babybat">
+                    <button id="botonbusque">Busqueda</button>
+                    <p id="espaciobusque"></p>
+                </div>
+
+            </div>
+            <div class="empanada">
+                <div class="babybat">
+                    <button id="botonmay">Mayor</button>
+                    <p id="espaciomay"></p>
+                </div>
+
+            </div>
+            <div class="empanada">
+                <div class="babybat">
+                    <button id="botonprom">Promedio</button>
+                    <p id="espacioprom"></p>
+                </div>
+
+            </div>
+            <div id="totaldiv" class="empanada">
+                <div class="babybat" id="lucas">
+                    <button id="botontotal">Total</button>
+                
+                </div>
+            </div>
 
         </div>
-        <input type="submit" value="Enviar">
-    </form>
-    <div>
-        <div>
-            <button id="botonbusque">Busqueda</button>
-            <p id="espaciobusque"></p>
-        </div>
-        <div>
-            <button id="botonmay">Mayor</button>
-            <p id="espaciomay"></p>
-        </div>
-        <div>
-            <button id="botonprom">Promedio</button>
-            <p id="espacioprom"></p>
-        </div>
-        <div id="totaldiv">
-            <button id="botontotal">Total</button>
-
-        </div>
-
     </div>
-
     <script src="js/codigo.js"></script>
 </body>
 
