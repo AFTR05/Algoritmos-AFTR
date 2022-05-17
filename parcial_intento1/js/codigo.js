@@ -63,7 +63,7 @@ formulario.addEventListener("submit", conservar = (e) => {        //funcion de p
             }
         }
         console.log(mayorvar)
-        espaciomayor.innerHTML=`La nota mayor fue ${mayorvar} con una frecuencia total de ${array[1].length}, los estudiantes que sacaron esta nota fueron ${estumayor}`
+        espaciomayor.innerHTML=`La nota mayor fue ${mayorvar} con una frecuencia total de ${estumayor.length}, los estudiantes que sacaron esta nota fueron ${estumayor}`
     }
 
 
