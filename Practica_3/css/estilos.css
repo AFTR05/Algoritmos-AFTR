@@ -40,3 +40,8 @@
 #epa{
     background-color:  rgb(0, 153, 255);
 }
+
+#funcionalidad{
+    display: flex;
+    flex-direction: column;
+}

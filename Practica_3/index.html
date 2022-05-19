@@ -17,28 +17,55 @@
     </div>
     <div id="caja">
         <div id="formulario">
-            <form>
-                <div class="espacio">
-                    <label class="form-label">Categoria</label>
-                    <input type="" id="espcategoria">
+
+            <div class="espacio">
+                <label class="form-label">Categoria</label>
+                <input type="" placeholder="Categoria" id="espcategoria">
+            </div>
+            <div class="espacio">
+                <label class="form-label">Nombre</label>
+                <input type="text" placeholder="Nombre" id="espnombre" autocomplete="off">
+            </div>
+            <div class="espacio">
+                <label class="form-label">Precio</label>
+                <input type="number" placeholder="Precio" id="espprecio" min=1 autocomplete="off">
+            </div>
+            <div class="espacio">
+                <label class="form-label">cantidad</label>
+                <input type="number" placeholder="Cantidad" id="espcantidad" min=1 autocomplete="off">
+            </div>
+            <div id="envio">
+                <button id="Envioini">Enviar inicio</button>
+                <button id="enviofin">Enviar Final</button>
+            </div>
+            <div id="funcionalidad">
+                <div id="espaciototalcat">
+                    <button id="totalcategoria"> Total de productos de categoria</button>
                 </div>
-                <div class="espacio">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" id="espnombre">
+                <div id="espaciototalproduct">
+                    <button id="totalproduct"> Total de productos</button>
                 </div>
-                <div class="espacio">
-                    <label class="form-label">Precio</label>
-                    <input type="text" id="espprecio">
+                <div id="espaciovalor">
+                    <button id="valorproduct"> Valor de productos</button>
                 </div>
-                <div class="espacio">
-                    <label class="form-label">cantidad</label>
-                    <input type="number" id="espcantidad">
+                <div id="espaciodisminur">
+                    <button id="disminuir"> Disminuir cantidad producto</button>
                 </div>
-                <div id="envio">
-                    <button type="submit" id="botonenvio">Submit</button>
+                <div id="espacioaumentar">
+                    <button id="aumentar"> Aumentar cantidad producto</button>
                 </div>
-                
-            </form>
+                <div id="espaciobusqueda">
+                    <button id="busqueproduct"> Busqueda de producto</button>
+                </div>
+                <div id="espacioeliminar">
+                    <button id="elimiproduct"> Eliminar un producto</button>
+                </div>
+                <div id="espacioorden">
+                    <button id="orden_ordinal"> Ordenar productos por orden de abedecedario</button>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
