@@ -1,3 +1,5 @@
+/* terminado estilos basicos */
+
 #formulario{
     display: flex;
     flex-direction: column;
@@ -22,7 +24,7 @@
 }
 
 *{
-    margin: 10px;
+    margin: 10px;      
 }
 
 #envio{
