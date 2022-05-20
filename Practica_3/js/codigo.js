@@ -26,10 +26,9 @@
 var productos = []
 let producto
 
-let prueba = [1, 2, 3, 4, 5, 6, 45, 7, 8]
-let nuevo = prueba.filter(numero => numero > 5)
-console.log(nuevo)
-console.log(prueba.indexOf(5))
+let prueba = [1,2,3,5,45,54,15]
+prueba.splice(2,1)
+console.log(prueba)
 
 
 
@@ -78,7 +77,7 @@ botonvalor.addEventListener('click', valor_totalproduct)
 botondisminuir.addEventListener('click', creacion_arreglo)
 botondisminuir.addEventListener('click',disminuir)
 
-botonaumentar.addEventListener('click',agregar_datos)
+botonaumentar.addEventListener('click',creacion_arreglo)
 botonaumentar.addEventListener('click',aumentar)
 
 botonbusque.addEventListener('click',creacion_arreglo)
@@ -133,27 +132,38 @@ function creacion_arreglo() {
 }
 
 
-function totalproduc_category() {  //esta mela
+function totalproduc_category() {  //esta mela 
     //filter por categoria
-    let espaciocat = document.getElementById('espaciototalcat')
+    let cadena = "";
+    let espaciocat = document.getElementById('espaciototalcat1')
     let preguntacat = (prompt('digite la categoria'))
     let productocat = arreglo_productos.filter(producto => producto.cate == preguntacat)
+    console.log(productocat)
     console.log(arreglo_productos[0]['cate'])
-    espaciocat.innerHTML = `En la categoria ${preguntacat} hay ${productocat.length} productos`    
-
+    cadena = cadena + `En la categoria ${preguntacat} hay ${productocat.length} productos`
+    for (let i = 0; i < productocat.length; i++) {
+        cadena=cadena + ` <br>${i+1}) ${productocat[i]["nomb"]} `
+        
+    }
+       espaciocat.innerHTML=`${cadena}`
 }
 
 function total_product() { //esta mela
     //lenght arreglo
-    let espacioproductos = document.getElementById('espaciototalproduct')
-    espacioproductos.innerHTML = `En la tienda actualmente hay ${arreglo_productos.length} productos`
+    let cadena=""
+    let espacioproductos = document.getElementById('espaciototalproduct1')
+    cadena = `En la tienda actualmente hay ${arreglo_productos.length} productos`
     console.log(arreglo_productos.length)
+    for (let i = 0; i < arreglo_productos.length; i++) {
+        cadena=cadena + `<br>${i+1}) ${arreglo_productos[i]["nomb"]}`
+    }
+    espacioproductos.innerHTML=`${cadena}`
 }
 
 function valor_totalproduct() {   //esta mela
     //sumar precios
     let suma = 0;
-    let espaciovalor = document.getElementById('espaciovalor');
+    let espaciovalor = document.getElementById('espaciovalor1');
     for (let i = 0; i < arreglo_productos.length; i++) {
         console.log(arreglo_productos[i]['prec'])
         suma += parseInt(arreglo_productos[i]['prec']);
@@ -165,8 +175,8 @@ function valor_totalproduct() {   //esta mela
     
 }
 
-function disminuir() { //tiene error
-    let espaciodisminuir = document.getElementById('espaciodisminuir')
+function disminuir() { //esta melo
+    let espaciodisminuir = document.getElementById('espaciodisminuir1')
     let pregunta = prompt('digite el nombre del producto a disminuir su cantidad')
     let noes
 
@@ -176,7 +186,8 @@ function disminuir() { //tiene error
             if (arreglo_productos[i]['nomb'] == pregunta) {
                 let bajarcanti = prompt('ingrese la cantidad a disminuir de la cantidad')
                 arreglo_productos[i]['canti']=arreglo_productos[i]['canti']-bajarcanti
-                espaciodisminuir.innerHTML=`Ahora la cantidad es de ${arreglo_productos[i]['canti']} unidades + <br>`
+                espaciodisminuir.innerHTML=`Ahora la cantidad de ${pregunta} es de ${arreglo_productos[i]['canti']} unidades <br>`
+                noes='hola';
                 break;
             }
         } else {
@@ -184,12 +195,15 @@ function disminuir() { //tiene error
         }
     }    
     if (noes=="No existe") {
-        espaciodisminuir.innerHTML=`El producto a buscar no esta en la lista de productos + <br>`
+        espaciodisminuir.innerHTML=`El producto a buscar no esta en la lista de productos <br>`
     }
+    productos=arreglo_productos
+    console.log(productos)
+    localStorage.productos = JSON.stringify(productos)
 }
 
-function aumentar() { //tiene error
-    let espacioaumentar = document.getElementById('espacioaumentar')
+function aumentar() { //esta melo
+    let espacioaumentar = document.getElementById('espacioaumentar1')
     let pregunta = prompt('digite el nombre del producto a aumentar su cantidad')
     let noes
 
@@ -198,8 +212,9 @@ function aumentar() { //tiene error
         if (condicion) {
             if (arreglo_productos[i]['nomb'] == pregunta) {
                 let bajarcanti = prompt('ingrese la cantidad a aumentar de la cantidad')
-                arreglo_productos[i]['canti']=arreglo_productos[i]['canti']+ bajarcanti
-                espacioaumentar.innerHTML=`Ahora la cantidad es de ${arreglo_productos[i]['canti']} unidades + <br>`
+                arreglo_productos[i]['canti']=parseInt(arreglo_productos[i]['canti'])+ parseInt(bajarcanti)
+                espacioaumentar.innerHTML=`Ahora la cantidad de ${pregunta} es de ${arreglo_productos[i]['canti']} unidades <br>`
+                noes=false;
                 break;
             }
         } else {
@@ -208,23 +223,24 @@ function aumentar() { //tiene error
     } 
         
     if (noes=="No existe") {
-        espacioaumentar.innerHTML=`El producto a buscar no esta en la lista de productos + <br>`
+        espacioaumentar.innerHTML=`El producto a buscar no esta en la lista de productos  <br>`
     }
+    productos=arreglo_productos
+    console.log(productos)
+    localStorage.productos = JSON.stringify(productos)
 }
 
-function buscarproduct() {    //tiene error   //falta adaptar espacio de texto y funcionalidad del boton 
-    let espaciobusqueda=document.getElementById('espaciobusqueda')
+function buscarproduct() {    //esta melo
+    let espaciobusqueda=document.getElementById('espaciobusqueda1')
     let pregunta = prompt('digite el nombre del producto')
     let noes
 
     for (let i = 0; i < arreglo_productos.length; i++) {
         let condicion = arreglo_productos[i]['nomb'].includes(pregunta)
         if (condicion) {
-            if (arreglo_productos[i]['nomb'] == pregunta) {  //listo este es para este
-                espaciobusqueda.innerHTML=`El producto ${arreglo_productos[i]['nomb']} tiene: + <br>`
-                espaciobusqueda.innerHTML=`Categoria ${arreglo_productos[i]['cate']}  + <br>`
-                espaciobusqueda.innerHTML=`Precio ${arreglo_productos[i]['prec']}  + <br>`
-                espaciobusqueda.innerHTML=`Cantidad ${arreglo_productos[i]['canti']}  + <br>`
+            if (arreglo_productos[i]['nomb'] == pregunta) {  //listo este es para imprimir 
+                espaciobusqueda.innerHTML=`El producto ${arreglo_productos[i]['nomb']} tiene: <br> Categoria ${arreglo_productos[i]['cate']}  <br> Precio ${arreglo_productos[i]['prec']}  <br>Cantidad ${arreglo_productos[i]['canti']}  <br>`
+                noes=false;
                 break;
             }
         } else {
@@ -236,18 +252,18 @@ function buscarproduct() {    //tiene error   //falta adaptar espacio de texto y
     }
 }
 
-function eliminarproduct() {    //tiene error //falta adaptar espacio de texto y funcionalidad del boton y la accion de eliminar
-    let espacioeliminar=document.getElementById('espacioeliminar')
+function eliminarproduct() {    //esta good
+    let espacioeliminar=document.getElementById('espacioeliminar1')
     let pregunta = prompt('digite el nombre del producto')
     let noes
     for (let i = 0; i < arreglo_productos.length; i++) {
         let condicion = arreglo_productos[i]['nomb'].includes(pregunta)
         if (condicion) {
             if (arreglo_productos[i]['nomb'] == pregunta) {
-                // .innerHTML=`El producto ${arreglo_productos[i]['nomb']} tiene: + <br>`
-                // .innerHTML=`Categoria ${arreglo_productos[i]['cate']}  + <br>`
-                // .innerHTML=`Precio ${arreglo_productos[i]['prec']}  + <br>`
-                // .innerHTML=`Cantidad ${arreglo_productos[i]['canti']}  + <br>`
+                arreglo_productos.splice(i,1)
+                espacioeliminar.innerHTML=`Ya fue eliminado el producto ${pregunta}`
+                console.log(arreglo_productos)
+                noes=false;
                 break;
             }
         } else {
@@ -257,14 +273,31 @@ function eliminarproduct() {    //tiene error //falta adaptar espacio de texto y
     if (noes=="No existe") {
         espacioeliminar.innerHTML=`El producto a buscar no esta en la lista de productos`
     }
+    productos=arreglo_productos
+    console.log(productos)
+    localStorage.productos = JSON.stringify(productos)
 }
 
-function ordinal() {    //tiene error  //falta adaptar espacio de texto y funcionalidad del boton
-    let espacioordinal=document.getElementById('espacioorden')
-    let orden = arreglo_productos.filter(producto => producto.nomb != undefined )
-    orden.sort()
+function ordinal() {    // esta melo
+    let espacioordinal=document.getElementById('espacioorden1')
+    let cadena=""
+    arreglo_productos.sort((a,b) => {
+        const nombreA = a.nomb.toLowerCase() 
+        const nombreB =b.nomb.toLowerCase()
+        if (nombreA < nombreB) {
+            return -1;
+        }
+
+        if (nombreA > nombreB) {
+            return 1;
+        }
+
+        return 0;
+    })
+    console.log(arreglo_productos)
+
     for (let i = 0; i < arreglo_productos.length; i++) {
-        espacioordinal.innerHTML=`1)  ${orden[i]} + <br>`
-        
+        cadena=cadena+JSON.stringify(arreglo_productos[i])+`<br>`
     }
+    espacioordinal.innerHTML=`${cadena}`
 }
