@@ -8,67 +8,71 @@
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">    
     <title>Ejercicio practico 3</title>
 </head>
 
 <body>
-    <div id="titulo">
-        <h1 id="epa">Agregar productos</h1>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-0,0,0">
+        <div id="titulo">        
+        <h1 id="epa" class="navbar-brand">Agregar productos</h1>
+        </div>
+    </nav>
+    
     <div id="caja">
         <div id="formulario">
 
             <div class="espacio">
                 <label class="form-label">Categoria</label>
-                <input type="" placeholder="Categoria" id="espcategoria">
+                <input type="" placeholder="Categoria" id="espcategoria" class="form-control">
             </div>
             <div class="espacio">
                 <label class="form-label">Nombre</label>
-                <input type="text" placeholder="Nombre" id="espnombre" autocomplete="off">
+                <input type="text" placeholder="Nombre" id="espnombre" autocomplete="off" class="form-control">
             </div>
             <div class="espacio">
                 <label class="form-label">Precio</label>
-                <input type="number" placeholder="Precio" id="espprecio" min=1 autocomplete="off">
+                <input type="number" placeholder="Precio" id="espprecio" min=1 autocomplete="off" class="form-control">
             </div>
             <div class="espacio">
-                <label class="form-label">cantidad</label>
-                <input type="number" placeholder="Cantidad" id="espcantidad" min=1 autocomplete="off">
+                <label class="form-label">Cantidad</label>
+                <input type="number" placeholder="Cantidad" id="espcantidad" min=1 autocomplete="off" class="form-control">
             </div>
             <div id="envio">
-                <button id="Envioini">Enviar inicio</button>
-                <button id="enviofin">Enviar Final</button>
+                <button id="Envioini" class="btn btn-outline-primary">Enviar inicio</button>
+                <button id="enviofin" class="btn btn-outline-primary">Enviar Final</button>
             </div>
             <div id="funcionalidad">
                 <div id="espaciototalcat">
-                    <button id="totalcategoria"> Total de productos de categoria</button>
+                    <button id="totalcategoria" class="btn btn-outline-secondary"> Total de productos de categoria</button>
                     <p id="espaciototalcat1"></p>
                 </div>
                 <div id="espaciototalproduct">
-                    <button id="totalproduct"> Total de productos</button>
+                    <button id="totalproduct" class="btn btn-outline-secondary"> Total de productos</button>
                     <p id="espaciototalproduct1"></p>
                 </div>
                 <div id="espaciovalor">
-                    <button id="valorproduct"> Valor de productos</button>
+                    <button id="valorproduct" class="btn btn-outline-secondary"> Valor de productos</button>
                     <p id="espaciovalor1"></p>
                 </div>
                 <div id="espaciodisminur">
-                    <button id="disminuir"> Disminuir cantidad producto</button>
+                    <button id="disminuir" class="btn btn-outline-warning"> Disminuir cantidad producto</button>
                     <p id="espaciodisminuir1"></p>
                 </div>
                 <div id="espacioaumentar">
-                    <button id="aumentar"> Aumentar cantidad producto</button>
+                    <button id="aumentar" class="btn btn-outline-success"> Aumentar cantidad producto</button>
                     <p id="espacioaumentar1"></p>
                 </div>
-                <div id="espaciobusqueda">
-                    <button id="busqueproduct"> Busqueda de producto</button>
+                <div id="espaciobusqueda" >
+                    <button id="busqueproduct" class="btn btn-outline-dark"> Busqueda de producto</button>
                     <p id="espaciobusqueda1"></p>
                 </div>
                 <div id="espacioeliminar">
-                    <button id="elimiproduct"> Eliminar un producto</button>
+                    <button id="elimiproduct" type="button" class="btn btn-outline-danger"> Eliminar un producto</button>
                     <p id="espacioeliminar1"></p>
                 </div>
                 <div id="espacioorden">
-                    <button id="orden_ordinal"> Ordenar nombres de productos por orden alfabetico</button>
+                    <button id="orden_ordinal" class="btn btn-outline-info"> Ordenar nombres de productos por orden alfabetico</button>
                     <p id="espacioorden1"></p>
                 </div>
             </div>

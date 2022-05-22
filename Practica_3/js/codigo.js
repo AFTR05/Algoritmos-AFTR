@@ -113,6 +113,10 @@ function agregar_inicio() {
     productos.unshift(producto)
     console.log(producto)
     localStorage.productos = JSON.stringify(productos)
+    document.getElementById('espnombre').value='';
+    document.getElementById('espprecio').value='';
+    document.getElementById('espcantidad').value='';
+    document.getElementById('espcategoria').value='';
 }
 
 
@@ -120,6 +124,10 @@ function agregar_final() {
     productos.push(producto)
     console.log(producto)
     localStorage.productos = JSON.stringify(productos)
+    document.getElementById('espnombre').value='';
+    document.getElementById('espprecio').value='';
+    document.getElementById('espcantidad').value='';
+    document.getElementById('espcategoria').value='';
 }
 
 
