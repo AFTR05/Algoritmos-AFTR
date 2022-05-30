@@ -1,0 +1,94 @@
+/* terminado estilos basicos */
+
+#formulario{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: center;
+}
+
+#titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+#caja{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+
+.espacio{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+}
+
+
+
+#envio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#botonenvio{
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color:rgb(0, 153, 255);
+}
+
+
+
+#funcionalidad{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 10%;
+    width: 50%;
+    align-items: center;
+
+}
+
+nav{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    margin-top: 25px;
+}
+
+td{
+    padding: 10px;
+    border: black;
+    border-width: 2px;
+}
+
+
+
+#espacios {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+
+#contenido{
+    display: flex;
+    flex-direction: column;
+    color: azure;
+    align-items: center;
+}
