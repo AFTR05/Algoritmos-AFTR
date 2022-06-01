@@ -117,10 +117,15 @@ function total_product() { //esta mela
 function valor_totalproduct() {   //esta mela
     //sumar precios
     arreglo_productos = JSON.parse(localStorage.productos)
-    let suma=arreglo_productos.reduce((valorAnterior, valorActual)=>{                    //uso de reduce
-        return valorAnterior.prec + valorActual.prec;                           
-      })
+    let suma=arreglo_productos.reduce((acumulador, elemento)=>{                    //uso de reduce
+        return acumulador+=elemento.prec;                           
+      },0)
     let espaciovalor = document.getElementById('espaciovalor1');
+    try {
+        suma*2
+    } catch (error) {                               //suo try and catch
+        console.log(error)
+    }
     espaciovalor.innerHTML = `La suma total de los precios de los productos es ${suma}`
 }
 
@@ -196,8 +201,6 @@ function eliminarproduct() {    //esta good
 
 function ordinal() {    // esta melo
     arreglo_productos = JSON.parse(localStorage.productos)
-    let espacioordinal=document.getElementById('espacioorden1')
-    let cadena=""
     arreglo_productos.sort((a,b) => {
         const nombreA = a.nomb.toLowerCase() 
         const nombreB =b.nomb.toLowerCase()
@@ -214,11 +217,5 @@ function ordinal() {    // esta melo
     arreglo_productos.forEach(element => {
         string=string+`<tr><td>${element.nomb}</td><td>${element.cate}</td><td>${element.canti}</td><td>${element.prec}</td></tr>`
     });
-
-    // console.log(arreglo_productos)
-    // arreglo_productos.forEach(produc => {
-    //     cadena=cadena+JSON.stringify(produc)+`<br>`
-    // });
-    // espacioordinal.innerHTML=`${cadena}`
     esptabla.innerHTML=`${string}`
 }
