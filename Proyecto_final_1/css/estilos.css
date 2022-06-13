@@ -1,0 +1,33 @@
+#logo{
+    width: 100px;
+}
+
+#nav_principal{
+    height: 100px;
+}
+
+img
+
+a{
+    border-color: transparent;
+}
+
+.iconos{
+    width: 30px;
+}
+
+#iconos{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+}
+
+
+
+#contenido{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    font-size: 12px;
+}
