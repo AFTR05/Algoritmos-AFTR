@@ -31,3 +31,39 @@ a{
     align-items: center;
     font-size: 12px;
 }
+
+#concom{
+    display: flex;
+    flex-direction: row;
+}
+
+#divcom{
+    width: 75%;
+    border: red solid;
+}
+
+
+#divfac{
+    width: 25%;
+    border: blue solid;
+}
+
+#divmis{
+    width: 75%;
+}
+
+#divrose{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#divmaria{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#divges{
+    width: 80%;
+}
