@@ -39,13 +39,14 @@ a{
 
 #divcom{
     width: 75%;
-    border: red solid;
+   
 }
 
 
 #divfac{
     width: 25%;
-    border: blue solid;
+    border: black solid;
+    border-radius: 3px;
 }
 
 #divmis{
@@ -66,4 +67,15 @@ a{
 
 #divges{
     width: 80%;
+}
+
+.imagenespro{
+    width: 250px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.divordeni{
+    display: flex;
+    flex-direction: column;
 }
