@@ -79,3 +79,29 @@ a{
     display: flex;
     flex-direction: column;
 }
+
+#divedicion{
+    margin: 25px;
+}
+
+#notedit{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.titleedit{
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.btn-danger{
+    margin-left: 20px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

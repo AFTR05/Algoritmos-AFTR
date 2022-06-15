@@ -20,7 +20,7 @@ import { url } from "./main.js";
 
 let productos=[];
 
-const getInfo=async(objeto)=>{
+export const getInfo=async(objeto)=>{
     const answer= await fetch(url+objeto);
     return answer.json();
 }
@@ -40,12 +40,62 @@ async function getUsers(){
     boton.setAttribute('class','btn btn-outline-dark')
     boton.innerHTML=`Agregar`
     divimagenes.appendChild(boton)
-});
+    });
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
+//tabla de productos 
+
+ 
 }
-
 getUsers()
-
 const divimagenes=document.getElementById('divcom')
+const espmispro=document.getElementById('tabla')
+
+async function showInfo(){
+    productos=await getInfo("products");
+    let string=`<tr><th>Nombre</th><th>Tipo</th><th>Cantidad</th><th>Precio</th></tr>`
+    productos.forEach(element => {
+        string=string+`<tr><td>${element.nombre}</td><td>${element.Tipo}</td><td>${element.cantidad}</td><td>${element.precio}</td></tr>`
+    });
+ console.log(string)
+ espmispro.innerHTML=`${string}`
+}
+showInfo()
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------
+//tabla de ventas
+const espmissell=document.getElementById('tablasell')
+
+async function showsell() {
+    productos=await getInfo("ventas");
+    let string=`<tr><th>Nombre</th><th>Tipo</th><th>Cantidad</th><th>Precio</th></tr>`
+    productos.forEach(element => {
+        string=string+`<tr><td>${element.name}</td><td>${element.tipo}</td><td>${element.cantidad}</td><td>${element.precio}</td></tr>`
+    });
+ console.log(string)
+ espmissell.innerHTML=`${string}`;
+}
+showsell()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // async function showInfo(){
