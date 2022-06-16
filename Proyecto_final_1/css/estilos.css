@@ -82,6 +82,7 @@ a{
 
 #divedicion{
     margin: 25px;
+    margin-bottom: -25px;
 }
 
 #notedit{
@@ -104,4 +105,34 @@ a{
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+#espnewinput{
+    margin-top: -25px;
+    margin: 25px;
+}
+
+#divbuttonedit{
+    display: flex;
+    justify-content: center;
+    margin-top: -25px;
+    margin: 25px;
+}
+
+#divorden{
+    display: flex;
+    flex-direction: column;
+}
+
+#botonedit{
+    margin: 25px;
+}
+
+#botonadd{
+    margin: 25px;
+}
+
+.inputnew{
+    margin-top: 7px;
+    margin-bottom: 7px;
 }

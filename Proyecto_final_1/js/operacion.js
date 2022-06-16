@@ -9,7 +9,12 @@
 //eliminar
 
 
- import { getInfo } from "./mostrar.js";
+import { getInfo } from "./mostrar.js";
+import { url } from "./main.js";
+
+
+
+
 let productos
 //creacion divs---------------------------------------------------------------------------------------------------------------------------
  async function creacion_divs() {
@@ -23,6 +28,7 @@ let productos
     }
  }
 creacion_divs()
+console.log(productos)
 let espedit= document.getElementById('divedicion')
 
 //creacion inputs ---------------------------------------------------------------------------------------------------------------------
@@ -59,3 +65,102 @@ async function creacion_inputs() {
 }
 
 creacion_inputs()
+
+const btnsave=document.getElementById('botonedit')
+const btnadd=document.getElementById('botonadd')
+
+btnsave.addEventListener('click',addUser)
+btnadd.addEventListener('click',addinputpro)
+
+
+async function addUser(){
+     productos=await getInfo('products');
+     for (let i = 0; i < productos.length; i++) {
+        let j=i+1
+        elimi(j)
+     }
+
+
+      for (let i = 0; i < 100 ; i++) {
+          let inpname=document.getElementById(`inputname${i}`)
+          let inptipo=document.getElementById(`inputtipo${i}`)
+          let inpcanti=document.getElementById(`inputcanti${i}`)
+          let inpprec=document.getElementById(`inputprecio${i}`)
+          if (inpname.value==""||inptipo.value==''||inpcanti.value==''||inpprec.value=='' ) {
+            continue;
+          } 
+          if (inpname.value==undefined||inptipo.value==undefined||inpcanti.value==undefined||inpprec.value==undefined) {
+            break;
+          }
+         let producto={
+          'name':inpname.value,
+          'Tipo':inptipo.value,
+          'cantidad':inpcanti.value,
+          'precio':inpprec.value,
+         }        
+         savechanges(producto)
+      }
+ }
+
+
+
+function savechanges(dato) {
+    fetch(url+"p",{
+             method:'POST',
+             body:JSON.stringify(dato),
+             headers:{
+                 "Content-type":"application/json"
+             }
+    })
+ }
+
+
+ function elimi(id) {
+     fetch(url+"p/"+id,{
+         method:'DELETE'
+     })
+     .then(response=>response.json());
+ }
+
+var itedicion=0
+
+function addinputpro() {
+    let espnewinput=document.getElementById('espnewinput')
+    let diveditor=document.createElement('div')
+    diveditor.setAttribute('id',`divedicion${itedicion}`)
+    diveditor.setAttribute('class','divinputs')
+    espnewinput.appendChild(diveditor);
+    let inpnamenew=document.createElement('input')
+    let inptiponew=document.createElement('input')
+    let inpcantinew=document.createElement('input')
+    let inpprecnew=document.createElement('input')
+    inpnamenew.setAttribute('id',`inputnamenew${itedicion}`)
+    inptiponew.setAttribute('id',`inputtiponew${itedicion}`)
+    inpcantinew.setAttribute('id',`inputcantinew${itedicion}`)
+    inpprecnew.setAttribute('id',`inputprecionew${itedicion}`)
+    inpnamenew.setAttribute('class','inputnew')
+    inptiponew.setAttribute('class','inputnew')
+    inpcantinew.setAttribute('class','inputnew')
+    inpprecnew.setAttribute('class','inputnew')
+    let diveditorcon=document.getElementById(`divedicion${itedicion}`)
+    diveditorcon.appendChild(inpnamenew)    
+    diveditorcon.appendChild(inptiponew)
+    diveditorcon.appendChild(inpcantinew)
+    diveditorcon.appendChild(inpprecnew)
+    itedicion=itedicion+1;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
