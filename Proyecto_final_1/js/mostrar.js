@@ -28,18 +28,48 @@ export const getInfo=async(objeto)=>{
 async function getUsers(){
     productos=await getInfo("products");
     console.log(productos)
-    console.log(productos[2]['nombre'])
-    productos.forEach(product => {
-    let image=document.createElement('img')
-    image.setAttribute('class', 'imagenespro')
-    image.setAttribute('src', `${product.imagen}`);
-    divimagenes.appendChild(image);
-    let boton=document.createElement('button')
-    boton.setAttribute('class', 'botonagre')
-    boton.setAttribute('class','btn btn-outline-dark')
-    boton.innerHTML=`Agregar`
-    divimagenes.appendChild(boton)
-    });
+    for (let i = 0; i < productos.length; i++) {
+        let divorden=document.createElement('div')
+        divorden.setAttribute('id',`divorden${i}`)
+        divorden.setAttribute('class','divorden')
+        divimagenes.appendChild(divorden);
+        let esporden=document.getElementById(`divorden${i}`);
+        let div=document.createElement('div')
+        div.setAttribute('id',`divimg${i}`)
+        div.setAttribute('class','divimagenes')
+        esporden.appendChild(div);
+        let image=document.createElement('img')
+        image.setAttribute('class', 'imagenespro')
+        image.setAttribute('src', `${productos[i]['imagen']}`);
+        let espdivimg=document.getElementById(`divimg${i}`)
+        let nombre=document.createElement('h6')
+        nombre.setAttribute('id',`nombreprod${i}`)
+        nombre.innerHTML=`${productos[i]['nombre']}`
+        let boton=document.createElement('button')
+        boton.setAttribute('class', 'botonagre')
+        boton.setAttribute('class','btn btn-outline-dark')
+        boton.setAttribute('style','width: 100px;')
+        boton.innerHTML=`${productos[i]['precio']}`
+        espdivimg.appendChild(image)
+        espdivimg.appendChild(nombre)
+        espdivimg.appendChild(boton)
+        if (productos[i]['cantidad']==0 || productos[i]['cantidad']<0) {
+            nombre.setAttribute('hidden')
+            image.setAttribute('hidden')
+            boton.setAttribute('hidden')
+        }
+    }
+    // productos.forEach(product => {
+    // let image=document.createElement('img')
+    // image.setAttribute('class', 'imagenespro')
+    // image.setAttribute('src', `${product.imagen}`);
+    // divimagenes.appendChild(image);
+    // let boton=document.createElement('button')
+    // boton.setAttribute('class', 'botonagre')
+    // boton.setAttribute('class','btn btn-outline-dark')
+    // boton.innerHTML=`Agregar`
+    // divimagenes.appendChild(boton)
+    // });
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 //tabla de productos 

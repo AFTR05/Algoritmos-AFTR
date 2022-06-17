@@ -136,3 +136,20 @@ a{
     margin-top: 7px;
     margin-bottom: 7px;
 }
+
+.divorden{
+    display: inline-block;
+    width: fit-content;
+    margin: 20px;
+}
+
+h6{
+    display: flex;
+}
+
+.divimagenes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
