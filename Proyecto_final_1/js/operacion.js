@@ -13,27 +13,33 @@ import { getInfo } from "./mostrar.js";
 import { url } from "./main.js";
 
 
+let productos;
+let espedit= document.getElementById('divedicion')
+const btnsave=document.getElementById('botonedit')
+const btnadd=document.getElementById('botonadd')
+btnsave.addEventListener('click',addchanges)
+btnadd.addEventListener('click',addinputpro)
+var itedicion=0
+
+window.onload=getdatos();
 
 
-let productos
 //creacion divs---------------------------------------------------------------------------------------------------------------------------
- async function creacion_divs() {
-    productos=await getInfo("products");
-    console.log('productos')
+function creacion_divs() {
+
     for (let i = 0; i < productos.length; i++) {
-        let divcreator=document.createElement('div')
-        divcreator.setAttribute('id',`div${i}`)
-        divcreator.setAttribute('class','divinputs')
+        let divcreator=document.createElement('div');
+        divcreator.setAttribute('id',`div${i}`);
+        divcreator.setAttribute('class','divinputs');
         espedit.appendChild(divcreator);
     }
  }
-creacion_divs()
-console.log(productos)
-let espedit= document.getElementById('divedicion')
+
+
 
 //creacion inputs ---------------------------------------------------------------------------------------------------------------------
-async function creacion_inputs() {
-    productos=await getInfo('products');
+function creacion_inputs() {
+
     for (let i = 0; i < productos.length; i++) {
         let divcontenedor=document.getElementById(`div${i}`)
         let inputname=document.createElement('input');
@@ -64,48 +70,27 @@ async function creacion_inputs() {
     }
 }
 
-creacion_inputs()
-
-const btnsave=document.getElementById('botonedit')
-const btnadd=document.getElementById('botonadd')
-
-btnsave.addEventListener('click',addUser)
-btnadd.addEventListener('click',addinputpro)
 
 
-async function addUser(){
-     productos=await getInfo('products');
-     for (let i = 0; i < productos.length; i++) {
-        let j=i+1
-        elimi(j)
-     }
 
 
-      for (let i = 0; i < 100 ; i++) {
-          let inpname=document.getElementById(`inputname${i}`)
-          let inptipo=document.getElementById(`inputtipo${i}`)
-          let inpcanti=document.getElementById(`inputcanti${i}`)
-          let inpprec=document.getElementById(`inputprecio${i}`)
-          if (inpname.value==""||inptipo.value==''||inpcanti.value==''||inpprec.value=='' ) {
-            continue;
-          } 
-          if (inpname.value==undefined||inptipo.value==undefined||inpcanti.value==undefined||inpprec.value==undefined) {
-            break;
-          }
-         let producto={
-          'name':inpname.value,
-          'Tipo':inptipo.value,
-          'cantidad':inpcanti.value,
-          'precio':inpprec.value,
-         }        
-         savechanges(producto)
-      }
+
+function addchanges(){
+    productos.forEach(element => {
+        elimi(element.id);
+    });
+     guardarcambios()
+
  }
 
-
+async function getdatos() {
+    productos=await getInfo('products');
+    creacion_divs()
+    creacion_inputs()
+}
 
 function savechanges(dato) {
-    fetch(url+"p",{
+    fetch(url+"products",{
              method:'POST',
              body:JSON.stringify(dato),
              headers:{
@@ -116,13 +101,13 @@ function savechanges(dato) {
 
 
  function elimi(id) {
-     fetch(url+"p/"+id,{
+     fetch(url+"products/"+id,{
          method:'DELETE'
      })
      .then(response=>response.json());
  }
 
-var itedicion=0
+
 
 function addinputpro() {
     let espnewinput=document.getElementById('espnewinput')
@@ -152,7 +137,27 @@ function addinputpro() {
 
 
 
-
+function guardarcambios() {
+    for (let i = 0; i < 100 ; i++) {
+        let inpname=document.getElementById(`inputname${i}`)
+        let inptipo=document.getElementById(`inputtipo${i}`)
+        let inpcanti=document.getElementById(`inputcanti${i}`)
+        let inpprec=document.getElementById(`inputprecio${i}`)
+        if (inpname.value==""||inptipo.value==''||inpcanti.value==''||inpprec.value=='' ) {
+          continue;
+        } 
+        if (inpname.value==undefined||inptipo.value==undefined||inpcanti.value==undefined||inpprec.value==undefined) {
+          break;
+        }
+       let producto={
+        'nombre':inpname.value,
+        'Tipo':inptipo.value,
+        'cantidad':inpcanti.value,
+        'precio':inpprec.value,
+       }        
+       savechanges(producto)
+ }
+}
 
 
 

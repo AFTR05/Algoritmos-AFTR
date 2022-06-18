@@ -8,161 +8,114 @@
 //volver tabla a input para editar
 
 import { url } from "./main.js";
-
-// const divContainer= document.getElementById("container");
-// const buttonAdd= document.getElementById("addBtn");
-// const buttonDelete= document.getElementById("deleteBtn");
-// const buttonListUser= document.getElementById("listUsersBtn");
-
-// buttonAdd.addEventListener("click",addUser);
-// buttonDelete.addEventListener("click",deleteUser);
-// buttonListUser.addEventListener("click",getUsers);
-
-let productos=[];
-
 export const getInfo=async(objeto)=>{
     const answer= await fetch(url+objeto);
     return answer.json();
 }
 
-async function getUsers(){
-    productos=await getInfo("products");
-    console.log(productos)
+
+const divimagenes=document.getElementById('divcom');
+const espmispro=document.getElementById('tabla');
+const espfactura=document.getElementById('factura');
+const espmissell=document.getElementById('tablasell')
+let productos;
+let ventas;
+
+window.onload=takedatos()
+window.onload=takeges()
+async function takedatos() {
+    productos=await getInfo('products');
+    getproducts()
+}
+
+async function takeges() {
+    ventas=await getInfo('ventas')
+    productos=await getInfo('products')
+    showsell()
+    showInfo()
+}
+
+function getproducts(){
     for (let i = 0; i < productos.length; i++) {
         let divorden=document.createElement('div')
         divorden.setAttribute('id',`divorden${i}`)
         divorden.setAttribute('class','divorden')
         divimagenes.appendChild(divorden);
         let esporden=document.getElementById(`divorden${i}`);
-        let div=document.createElement('div')
-        div.setAttribute('id',`divimg${i}`)
-        div.setAttribute('class','divimagenes')
+        let div=document.createElement('div');
+        div.setAttribute('id',`divimg${i}`);
+        div.setAttribute('class','divimagenes');
         esporden.appendChild(div);
-        let image=document.createElement('img')
-        image.setAttribute('class', 'imagenespro')
+        let image=document.createElement('img');
+        image.setAttribute('class', 'imagenespro');
         image.setAttribute('src', `${productos[i]['imagen']}`);
-        let espdivimg=document.getElementById(`divimg${i}`)
-        let nombre=document.createElement('h6')
-        nombre.setAttribute('id',`nombreprod${i}`)
-        nombre.innerHTML=`${productos[i]['nombre']}`
-        let boton=document.createElement('button')
-        boton.setAttribute('class', 'botonagre')
-        boton.setAttribute('class','btn btn-outline-dark')
-        boton.setAttribute('style','width: 100px;')
-        boton.innerHTML=`${productos[i]['precio']}`
-        espdivimg.appendChild(image)
-        espdivimg.appendChild(nombre)
-        espdivimg.appendChild(boton)
+        let espdivimg=document.getElementById(`divimg${i}`);
+        let nombre=document.createElement('h6');
+        nombre.setAttribute('id',`nombreprod${i}`);
+        nombre.innerHTML=`${productos[i]['nombre']}`;
+        let boton=document.createElement('button');
+        boton.setAttribute('class', 'botonagre');
+        boton.setAttribute('id',`agregar${i}`);
+        boton.setAttribute('style','width: 100px;');
+        boton.innerHTML=`${productos[i]['precio']}`;
+        espdivimg.appendChild(image);
+        espdivimg.appendChild(nombre);
+        espdivimg.appendChild(boton);
         if (productos[i]['cantidad']==0 || productos[i]['cantidad']<0) {
-            nombre.setAttribute('hidden')
-            image.setAttribute('hidden')
-            boton.setAttribute('hidden')
+            nombre.setAttribute('hidden');
+            image.setAttribute('hidden');
+            boton.setAttribute('hidden');
         }
     }
-    // productos.forEach(product => {
-    // let image=document.createElement('img')
-    // image.setAttribute('class', 'imagenespro')
-    // image.setAttribute('src', `${product.imagen}`);
-    // divimagenes.appendChild(image);
-    // let boton=document.createElement('button')
-    // boton.setAttribute('class', 'botonagre')
-    // boton.setAttribute('class','btn btn-outline-dark')
-    // boton.innerHTML=`Agregar`
-    // divimagenes.appendChild(boton)
-    // });
+}
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 //tabla de productos 
 
- 
-}
-getUsers()
-const divimagenes=document.getElementById('divcom')
-const espmispro=document.getElementById('tabla')
-
-async function showInfo(){
-    productos=await getInfo("products");
+function showInfo(){
     let string=`<tr class="table-dark"><th>Nombre</th><th>Tipo</th><th>Cantidad</th><th>Precio</th></tr>`
     productos.forEach(element => {
         string=string+`<tr><td>${element.nombre}</td><td>${element.Tipo}</td><td>${element.cantidad}</td><td>${element.precio}</td></tr>`
     });
- espmispro.innerHTML=`${string}`
+    espmispro.innerHTML=`${string}`;
 }
-showInfo()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 //tabla de ventas
-const espmissell=document.getElementById('tablasell')
-
-async function showsell() {
-    productos=await getInfo("ventas");
+ function showsell() {
     let string=`<tr class="table-dark"><th>Nombre</th><th>Tipo</th><th>Cantidad</th><th>Precio</th></tr>`
-    productos.forEach(element => {
-        string=string+`<tr><td>${element.name}</td><td>${element.tipo}</td><td>${element.cantidad}</td><td>${element.precio}</td></tr>`
+        ventas.forEach(element => {
+        string=string+`<tr><td>${element.nombre}</td><td>${element.Tipo}</td><td>${element.cantidad}</td><td>${element.precio}</td></tr>`
     });
- espmissell.innerHTML=`${string}`;
-}
-showsell()
+    espmissell.innerHTML=`${string}`;
+ }
 
+//funcion de facturacion o tabulacion del momento de agregar productos 
 
+//creacion de arreglo con las ubicaciones de los botones de agregar
 
+//creacion en un ciclo de los eventos 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// async function showInfo(){
-//     divContainer.innerHTML="";
-//     users.forEach(item=>{
-//         divContainer.innerHTML+=item.nombre+"<br>";
-//     })
-// }
-
-// function addUser(){
-//     let nombre=prompt("Ingrese el nombre");
-//     let edad= parseInt(prompt("ingrese la edad"));
-//     let user={
-//         nombre:nombre,
-//         edad:edad
+// function addshop() {
+//     let ubibtn=[]
+//     for (let i = 0; i < productos.length; i++) {
+//         let ubi=document.getElementById(`agregar${i}`)
+//         console.log(ubi.id)
+//         ubibtn.push(ubi)
 //     }
-//     users.push(user);
-//     showInfo();
-//     saveUser(user);
-// }
-// function deleteUser(){
-//     let id= prompt("ingrese el ID");
-//     deleteFinalUser(id);
+//     ubibtn.forEach(element => {
+//         element.addEventListener('click',eventos(element))
+//     });
 // }
 
-// function deleteFinalUser(id){
-//     fetch(url+"users/"+id,{
-//         method:'DELETE'
-//     })
-//     .then(response=>response.json());
-//     getUsers();
+
+// function eventos(ubicacion) { //funcion
+//     let id=ubicacion.id;
+//     let iterador=id.substr(7)
+//     console.log(iterador);
+//     let string=`<tr class="table-dark"><th>Nombre</th><th>Tipo</th><th>Cantidad</th><th>Precio</th></tr>`
+//     string=string+`<tr><td>${productos[iterador]['nombre']}</td><td>${productos[iterador]['Tipo']}</td><td>${productos[iterador]['cantidad']}</td><td>${productos[iterador]['precio']}</td></tr>`
+//     espfactura.innerHTML=`${string}`;
 // }
 
-// function saveUser(user){
-//     fetch(url+"users",{
-//         method:'POST',
-//         body:JSON.stringify(user),
-//         headers:{
-//             "Content-type":"application/json"
-//         }
-//     })
-//     .then(response=>response.json());
-// }
