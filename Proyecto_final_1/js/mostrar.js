@@ -16,7 +16,7 @@ export const getInfo=async(objeto)=>{
 
 const divimagenes=document.getElementById('divcom');
 const espmispro=document.getElementById('tabla');
-const espfactura=document.getElementById('factura');
+const espfactura=document.getElementById('factxd');
 const espmissell=document.getElementById('tablasell')
 let productos;
 let ventas;
@@ -26,13 +26,34 @@ window.onload=takeges()
 async function takedatos() {
     productos=await getInfo('products');
     getproducts()
+    let string=`<tr class="table-dark"><th>Nombre</th><th>Cantidad</th><th>Precio</th></tr>`
+    let variedad=[]
+    productos.forEach(element => {
+        variedad.push({
+            'nombre':element.nombre,
+            'cantidad':0,
+            'cantidad_total':element.cantidad,
+            'precio':element.precio
+        })
+    });
+    variedad.forEach((element) => {
+    string=string+`<tr><td>${element.nombre}</td><td><input type="number" placeholder="Cantidad" class="espcantidad" min=1  max='${element.cantidad_total}' autocomplete="off"
+    class="form-control"></td><td>${element.precio}</td></tr>`
+ });
+    espfactura.innerHTML=`${string}`;
+    
 }
+
+
+
+
 
 async function takeges() {
     ventas=await getInfo('ventas')
     productos=await getInfo('products')
     showsell()
     showInfo()
+
 }
 
 function getproducts(){
@@ -55,7 +76,7 @@ function getproducts(){
         nombre.innerHTML=`${productos[i]['nombre']}`;
         let boton=document.createElement('button');
         boton.setAttribute('class', 'botonagre');
-        boton.setAttribute('id',`agregar${i}`);
+        boton.setAttribute('id',`btn btn-outline-dark disable`);
         boton.setAttribute('style','width: 100px;');
         boton.innerHTML=`${productos[i]['precio']}`;
         espdivimg.appendChild(image);
@@ -97,25 +118,27 @@ function showInfo(){
 
 //creacion en un ciclo de los eventos 
 
-// function addshop() {
-//     let ubibtn=[]
-//     for (let i = 0; i < productos.length; i++) {
-//         let ubi=document.getElementById(`agregar${i}`)
-//         console.log(ubi.id)
-//         ubibtn.push(ubi)
-//     }
-//     ubibtn.forEach(element => {
-//         element.addEventListener('click',eventos(element))
-//     });
-// }
+function guardarcantidad() {
+    const canskmd=document.querySelectorAll('.espcantidad')
+    console.log(canskmd)
+    for (let i = 0; i < canskmd.length; i++) {
+        variedad[i]['cantidad']=canskmd[i].value
+    }
+    console.log(variedad)
+
+}
+//  function addshop() {
+//      let ubibtn=[]
+//      for (let i = 0; i < productos.length; i++) {
+//          let ubi=document.getElementById(`agregar${i}`)
+//          console.log(ubi.id)
+//          ubibtn.push(ubi)
+//      }
+//      ubibtn.forEach(element => {
+//          element.addEventListener('click',eventos(element))
+//      });
+//  }
 
 
-// function eventos(ubicacion) { //funcion
-//     let id=ubicacion.id;
-//     let iterador=id.substr(7)
-//     console.log(iterador);
-//     let string=`<tr class="table-dark"><th>Nombre</th><th>Tipo</th><th>Cantidad</th><th>Precio</th></tr>`
-//     string=string+`<tr><td>${productos[iterador]['nombre']}</td><td>${productos[iterador]['Tipo']}</td><td>${productos[iterador]['cantidad']}</td><td>${productos[iterador]['precio']}</td></tr>`
-//     espfactura.innerHTML=`${string}`;
-// }
+
 
