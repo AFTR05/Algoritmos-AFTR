@@ -21,6 +21,9 @@ const btnadd=document.getElementById('botonadd')
 btnsave.addEventListener('click',()=>{
     addchanges()
     addproduct()
+    setInterval(() => {
+        location.reload()
+      }, 3000);
 })
 btnadd.addEventListener('click',addinputpro)
 let itedicion=0

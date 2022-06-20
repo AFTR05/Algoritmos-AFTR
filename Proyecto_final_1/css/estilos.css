@@ -186,7 +186,10 @@ h6{
 }
 
 .tituloxd{
-    margin: 20px;
+    font-family: 'Russo One', sans-serif;
+    margin: 30px;
+    font-size: 50px;
+    align-self: center;
 }
 
 .parrafoxd{
@@ -195,4 +198,16 @@ h6{
 
 #totalnote{
     margin-bottom: 50px;
+}
+
+.titlete{
+    font-family: 'Russo One', sans-serif;
+    margin: 30px;
+}
+
+p{
+    width: 75%;
+    font-size: 28px;
+    align-self: center;
+    text-align: center;
 }

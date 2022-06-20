@@ -79,6 +79,7 @@ try {
 async function takedatos() {
     productos=await getInfo('products')
     getproducts()
+
 }
 
 async function takeges() {
@@ -129,6 +130,8 @@ function getproducts(){
     let iterador =ubicacion.substring(10)
     element.addEventListener('click',()=> {
     direccionfactura(parseInt(iterador))
+    descartarbtn.removeAttribute('hidden')
+    valortt.removeAttribute('hidden')
  })
 });
 }
