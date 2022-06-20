@@ -54,7 +54,12 @@ try {
     console.log(error)
 }
 
-descartarbtn.addEventListener('click',descartar)
+try {
+    descartarbtn.addEventListener('click',descartar)
+} catch (error) {
+    console.log(error)
+}
+
 
 
 async function takedatos() {
