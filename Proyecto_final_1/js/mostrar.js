@@ -26,6 +26,7 @@ const descartarbtn=document.getElementById('btndescartar')
 const valortt=document.getElementById('btntt')
 const totalnote=document.getElementById('totalnote')
 
+
 window.onload=()=>{
     takeges()
     takedatos()
@@ -69,6 +70,7 @@ try {
     valortt.addEventListener('click',()=>{
     valortotal()
     comprarbtn.removeAttribute('hidden')
+
 })
 } catch (error) {
     console.log(error)
