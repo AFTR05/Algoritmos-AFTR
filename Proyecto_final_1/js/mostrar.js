@@ -42,12 +42,12 @@ try {
         cambiosarreglos(i,ubications[i])
     }
     btncomprar()
-    window.setTimeout(swal({
+   swal({
         title: "Completado!",
         text: "Has completado tu compra",
         icon: "success",
         button: "Continuar",
-      }), 2500);
+      })
     
 })
 } catch (error) {
