@@ -17,9 +17,12 @@ let productos;
 let espedit= document.getElementById('divedicion')
 const btnsave=document.getElementById('botonedit')
 const btnadd=document.getElementById('botonadd')
-btnsave.addEventListener('click',addchanges)
+btnsave.addEventListener('click',()=>{
+    addchanges()
+    addproduct()
+})
 btnadd.addEventListener('click',addinputpro)
-var itedicion=0
+let itedicion=0
 
 window.onload=getdatos();
 
@@ -76,46 +79,91 @@ function creacion_inputs() {
         divcontenedor.appendChild(inputprecio)
         divcontenedor.appendChild(inputimg)
         divcontenedor.appendChild(botondele)
+        
+        
     }
+    let btnelimi=document.querySelectorAll(`.btn-danger`)
+        console.log(btnelimi)
+        btnelimi.forEach(element => {
+         let ubication=element.id
+         let iterador =ubication.substring(9)
+         element.addEventListener('click',()=> {
+             elimi(parseInt(iterador)+1)
+         })
+     });
 }
 
 
 function addchanges(){
-    for (let i = 0; i < 100 ; i++) {
-        let inpname=document.getElementById(`inputname${i}`)
-        let inptipo=document.getElementById(`inputtipo${i}`)
-        let inpcanti=document.getElementById(`inputcanti${i}`)
-        let inpprec=document.getElementById(`inputprecio${i}`)
-        let inpimg=document.getElementById(`inputprecio${i}`)
-        if (inpname.value==""||inptipo.value==''||inpcanti.value==''||inpprec.value==''||inpimg.value=='' ) {
-          continue;
-        } 
-        if (inpname.value==undefined||inptipo.value==undefined||inpcanti.value==undefined||inpprec.value==undefined||inpimg.value==undefined) {
-          break;
+    try {
+        for (let i = 0; i < 100 ; i++) {
+            let inpname=document.getElementById(`inputname${i}`)
+            let inptipo=document.getElementById(`inputtipo${i}`)
+            let inpcanti=document.getElementById(`inputcanti${i}`)
+            let inpprec=document.getElementById(`inputprecio${i}`)
+            let inpimg=document.getElementById(`inputimg${i}`)
+            if (inpname.value==""||inptipo.value==''||inpcanti.value==''||inpprec.value==''||inpimg.value=='' ) {
+              continue;
+            } 
+            if (inpname.value==undefined||inptipo.value==undefined||inpcanti.value==undefined||inpprec.value==undefined||inpimg.value==undefined) {
+              break;
+            }
+           let produ={
+            'nombre':inpname.value,
+            'Tipo':inptipo.value,
+            'cantidad':inpcanti.value,
+            'precio':inpprec.value,
+            'imagen':inpimg.value,
+            'id':i+1
+           }      
+           puts(i+1,produ)
+           
         }
-       let produ={
-        'nombre':inpname.value,
-        'Tipo':inptipo.value,
-        'cantidad':inpcanti.value,
-        'precio':inpprec.value,
-        'imagen':inpimg.value,
-        'id':i+1
-       }      
-       puts(i+1,produ);  
+        eliminarmelo()
+    } catch (error) {
+        console.log(error)
     }
+    
+    
+}
 
+function addproduct() {
+    let idnew=productos.length
+    for (let i = 0; i < 100; i++) {
+        let newinpname=document.getElementById(`inputnamenew${i}`)
+        let newinptipo=document.getElementById(`inputtiponew${i}`)
+        let newinpcanti=document.getElementById(`inputcantinew${i}`)
+        let newinpprec=document.getElementById(`inputprecionew${i}`)
+        let newinpimg=document.getElementById(`inputimgnew${i}`)
+        if (newinpname.value==""||newinptipo.value==''||newinpcanti.value==''||newinpprec.value==''||newinpimg.value=='' ) {
+            continue;
+        } 
+        if (newinpname.value==undefined||newinptipo.value==undefined||newinpcanti.value==undefined||newinpprec.value==undefined||newinpimg.value==undefined) {
+            break;
+        }
+      let newprodu={
+        'nombre':newinpname.value,
+        'Tipo':newinptipo.value,
+        'cantidad':newinpcanti.value,
+        'precio':newinpprec.value,
+        'imagen':newinpimg.value,
+        'id':idnew
+      }  
+      posts(newprodu)
+      idnew+=1
+    }
+}
 
-/*     productos.forEach(element => {
-        setInterval(puts(element.id,),2500);
-    });
-    //  guardarcambios() */
-
- }
+function asda() {
+    eliminarmelo()
+}
 
 async function getdatos() {
     productos=await getInfo('products');
     creacion_divs()
     creacion_inputs()
+    
+   
 }
 
 function posts(dato) {
@@ -128,6 +176,7 @@ function posts(dato) {
     })
     .then(response=>response.json())
     .then(data=>console.log(data))
+    
  }
 
 
@@ -137,9 +186,9 @@ function posts(dato) {
      })
      .then(resp=>resp.json())
      .then(data=>console.log(data))
-
      
  }
+
 function puts(id,dato) {
     fetch(url+"products/"+id,{
         method:'PUT',
@@ -150,6 +199,7 @@ function puts(id,dato) {
     })
     .then(res=>res.json())
     .then(data=>console.log(data))
+    
  }
 
 
@@ -168,12 +218,17 @@ function addinputpro() {
     inptiponew.setAttribute('id',`inputtiponew${itedicion}`)
     inpcantinew.setAttribute('id',`inputcantinew${itedicion}`)
     inpprecnew.setAttribute('id',`inputprecionew${itedicion}`)
-    inpimgnew.setAttribute('id',`inputimg${itedicion}`)
+    inpimgnew.setAttribute('id',`inputimgnew${itedicion}`)
     inpnamenew.setAttribute('class','inputnew')
     inptiponew.setAttribute('class','inputnew')
     inpcantinew.setAttribute('class','inputnew')
     inpprecnew.setAttribute('class','inputnew')
     inpimgnew.setAttribute('class','inputnew')
+    inpnamenew.setAttribute('type','text')
+    inptiponew.setAttribute('type','text')
+    inpcantinew.setAttribute('type','number')
+    inpprecnew.setAttribute('type','number')
+    inpimgnew.setAttribute('type','url')
     let diveditorcon=document.getElementById(`divedicion${itedicion}`)
     diveditorcon.appendChild(inpnamenew)    
     diveditorcon.appendChild(inptiponew)
@@ -181,15 +236,27 @@ function addinputpro() {
     diveditorcon.appendChild(inpprecnew)
     diveditorcon.appendChild(inpimgnew)
     itedicion=itedicion+1;
+    
+ }
+
+//--------------------------------------------------------------------------------------------------------------------------------
+
+function eliminarmelo() {
+    
  }
 
 
-
-
-
-
-
-
+/* var divs = document.getElementsByClassName("test");
+    
+    //Recorres la lista de elementos seleccionados
+    for (var i=0; i< divs.length; i++) {
+        //Añades un evento a cada elemento
+        divs[i].addEventListener("click",function() {
+           //Aquí la función que se ejecutará cuando se dispare el evento
+           alert(this.innerHTML); //En este caso alertaremos el texto del cliqueado
+        });
+    }
+ */
 
 
 
