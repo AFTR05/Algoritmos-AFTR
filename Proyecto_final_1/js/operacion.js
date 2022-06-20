@@ -25,7 +25,6 @@ btnadd.addEventListener('click',addinputpro)
 let itedicion=0
 
 window.onload=getdatos();
-let elemento
 
 //creacion divs---------------------------------------------------------------------------------------------------------------------------
 function creacion_divs() {
