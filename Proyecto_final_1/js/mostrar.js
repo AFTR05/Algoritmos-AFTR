@@ -14,39 +14,53 @@ export const getInfo=async(objeto)=>{
 }
 
 
+
+
+
 const divimagenes=document.getElementById('divcom');
 const espmispro=document.getElementById('tabla');
 const espfactura=document.getElementById('factxd');
 const espmissell=document.getElementById('tablasell')
-let productos;
-let ventas;
+const comprarbtn=document.getElementById('btncomprar')
+const descartarbtn=document.getElementById('btndescartar')
 
-window.onload=takedatos()
-window.onload=takeges()
-async function takedatos() {
-    productos=await getInfo('products');
-    getproducts()
-    let string=`<tr class="table-dark"><th>Nombre</th><th>Cantidad</th><th>Precio</th></tr>`
-    let variedad=[]
-    productos.forEach(element => {
-        variedad.push({
-            'nombre':element.nombre,
-            'cantidad':0,
-            'cantidad_total':element.cantidad,
-            'precio':element.precio
-        })
-    });
-    variedad.forEach((element) => {
-    string=string+`<tr><td>${element.nombre}</td><td><input type="number" placeholder="Cantidad" class="espcantidad" min=1  max='${element.cantidad_total}' autocomplete="off"
-    class="form-control"></td><td>${element.precio}</td></tr>`
- });
-    espfactura.innerHTML=`${string}`;
-    
+window.onload=()=>{
+    takeges()
+    takedatos()
 }
 
 
+let productos;
+let ventas;
+let string;
+let itt=0;
+let ubications=[]
+
+try {
+    comprarbtn.addEventListener('click',()=>{
+    for (let i = 0; i < ubications.length; i++) {
+        cambiosarreglos(i,ubications[i])
+    }
+    btncomprar()
+    window.setTimeout(swal({
+        title: "Completado!",
+        text: "Has completado tu compra",
+        icon: "success",
+        button: "Continuar",
+      }), 2500);
+    
+})
+} catch (error) {
+    console.log(error)
+}
+
+descartarbtn.addEventListener('click',descartar)
 
 
+async function takedatos() {
+    productos=await getInfo('products')
+    getproducts()
+}
 
 async function takeges() {
     ventas=await getInfo('ventas')
@@ -75,10 +89,10 @@ function getproducts(){
         nombre.setAttribute('id',`nombreprod${i}`);
         nombre.innerHTML=`${productos[i]['nombre']}`;
         let boton=document.createElement('button');
-        boton.setAttribute('class', 'botonagre');
-        boton.setAttribute('id',`btn btn-outline-dark disable`);
+        boton.setAttribute('class',`btn btn-outline-dark`);
+        boton.setAttribute('id',`btnagregar${i}`)
         boton.setAttribute('style','width: 100px;');
-        boton.innerHTML=`${productos[i]['precio']}`;
+        boton.innerHTML=`$${productos[i]['precio']}`;
         espdivimg.appendChild(image);
         espdivimg.appendChild(nombre);
         espdivimg.appendChild(boton);
@@ -88,8 +102,73 @@ function getproducts(){
             boton.setAttribute('hidden');
         }
     }
+    let btnagregar=document.querySelectorAll(`.btn-outline-dark`)
+    console.log(btnagregar)
+    string=`<tr class="table-dark"><th>Nombre</th><th>Cantidad</th><th>Precio</th></tr>`
+    btnagregar.forEach(element => {
+    let ubicacion=element.id
+    let iterador =ubicacion.substring(10)
+    element.addEventListener('click',()=> {
+    direccionfactura(parseInt(iterador))
+ })
+});
 }
 
+
+function direccionfactura(ubication) {
+     string=string+`<tr><td>${productos[ubication]['nombre']}</td><td><input type="number" placeholder="Cantidad" class="espcantidad" min=1  max='${productos[ubication]['cantidad']}' autocomplete="off"
+     class="form-control" id="canti${itt}"></td><td>${parseInt(productos[ubication]['precio'])}</td></tr>`
+     ubications.push(ubication)
+     espfactura.innerHTML=`${string}`;
+     itt=itt+1
+     
+}
+function cambiosarreglos(id,ubication) {
+    let cantiinput=document.getElementById(`canti${id}`)
+    console.log(cantiinput)
+    console.log(ubications)
+     ventas[parseInt(ubication)]['cantidad']=parseInt(ventas[parseInt(ubication)]['cantidad'])+parseInt(cantiinput.value)
+     console.log(ventas[parseInt(ubication)]['cantidad'])
+     productos[parseInt(ubication)]['cantidad']=parseInt(productos[parseInt(ubication)]['cantidad'])-parseInt(ventas[parseInt(ubication)]['cantidad'])
+}
+
+function btncomprar() {
+  for (let i = 0; i < productos.length; i++) {
+       let produ={
+        'nombre':productos[i]['nombre'],
+        'Tipo':productos[i]['Tipo'],
+        'cantidad':productos[i]['cantidad'],
+        'precio':productos[i]['precio'],
+        'imagen':productos[i]['imagen'],
+        'id':i+1
+       }      
+       putst(i+1,produ,'products')
+  }
+  for (let i = 0; i < ventas.length; i++) {
+    let vent={
+     'nombre':ventas[i]['nombre'],
+     'Tipo':ventas[i]['Tipo'],
+     'cantidad':ventas[i]['cantidad'],
+     'precio':ventas[i]['precio'],
+     'imagen':ventas[i]['imagen'],
+     'id':i+1
+    }      
+    putst(i+1,vent,'ventas')
+}
+}
+
+function putst(id,dato,resour) {
+    fetch(url+`${resour}/`+id,{
+        method:'PUT',
+        body:JSON.stringify(dato),
+        headers:{
+        "Content-type":"application/json"
+        }
+    })
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+    
+ }
 //---------------------------------------------------------------------------------------------------------------------------------------------
 //tabla de productos 
 
@@ -112,33 +191,8 @@ function showInfo(){
     espmissell.innerHTML=`${string}`;
  }
 
-//funcion de facturacion o tabulacion del momento de agregar productos 
 
-//creacion de arreglo con las ubicaciones de los botones de agregar
-
-//creacion en un ciclo de los eventos 
-
-function guardarcantidad() {
-    const canskmd=document.querySelectorAll('.espcantidad')
-    console.log(canskmd)
-    for (let i = 0; i < canskmd.length; i++) {
-        variedad[i]['cantidad']=canskmd[i].value
-    }
-    console.log(variedad)
-
+function descartar() {
+    string=`<tr class="table-dark"><th>Nombre</th><th>Cantidad</th><th>Precio</th></tr>`
+    espfactura.innerHTML=`${string}`
 }
-//  function addshop() {
-//      let ubibtn=[]
-//      for (let i = 0; i < productos.length; i++) {
-//          let ubi=document.getElementById(`agregar${i}`)
-//          console.log(ubi.id)
-//          ubibtn.push(ubi)
-//      }
-//      ubibtn.forEach(element => {
-//          element.addEventListener('click',eventos(element))
-//      });
-//  }
-
-
-
-

@@ -13,6 +13,7 @@ import { getInfo } from "./mostrar.js";
 import { url } from "./main.js";
 
 
+
 let productos;
 let espedit= document.getElementById('divedicion')
 const btnsave=document.getElementById('botonedit')
@@ -24,8 +25,15 @@ btnsave.addEventListener('click',()=>{
 btnadd.addEventListener('click',addinputpro)
 let itedicion=0
 
-window.onload=getdatos();
 
+window.onload=()=>getdatos();
+
+
+async function getdatos() {
+    productos=await getInfo('products');
+    creacion_divs()
+    creacion_inputs()
+}
 //creacion divs---------------------------------------------------------------------------------------------------------------------------
 function creacion_divs() {
     for (let i = 0; i < productos.length; i++) {
@@ -118,12 +126,9 @@ function addchanges(){
            puts(i+1,produ)
            
         }
-        eliminarmelo()
     } catch (error) {
         console.log(error)
     }
-    
-    
 }
 
 function addproduct() {
@@ -153,17 +158,7 @@ function addproduct() {
     }
 }
 
-function asda() {
-    eliminarmelo()
-}
 
-async function getdatos() {
-    productos=await getInfo('products');
-    creacion_divs()
-    creacion_inputs()
-    
-   
-}
 
 function posts(dato) {
     fetch(url+"products",{
@@ -234,28 +229,10 @@ function addinputpro() {
     diveditorcon.appendChild(inpcantinew)
     diveditorcon.appendChild(inpprecnew)
     diveditorcon.appendChild(inpimgnew)
-    itedicion=itedicion+1;
-    
+    itedicion=itedicion+1; 
  }
 
 //--------------------------------------------------------------------------------------------------------------------------------
-
-function eliminarmelo() {
-    
- }
-
-
-/* var divs = document.getElementsByClassName("test");
-    
-    //Recorres la lista de elementos seleccionados
-    for (var i=0; i< divs.length; i++) {
-        //Añades un evento a cada elemento
-        divs[i].addEventListener("click",function() {
-           //Aquí la función que se ejecutará cuando se dispare el evento
-           alert(this.innerHTML); //En este caso alertaremos el texto del cliqueado
-        });
-    }
- */
 
 
 
