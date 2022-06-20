@@ -23,6 +23,8 @@ const espfactura=document.getElementById('factxd');
 const espmissell=document.getElementById('tablasell')
 const comprarbtn=document.getElementById('btncomprar')
 const descartarbtn=document.getElementById('btndescartar')
+const valortt=document.getElementById('btntt')
+const totalnote=document.getElementById('totalnote')
 
 window.onload=()=>{
     takeges()
@@ -48,7 +50,10 @@ try {
         icon: "success",
         button: "Continuar",
       })
-    
+      setInterval(() => {
+        location.reload()
+      }, 3000);
+
 })
 } catch (error) {
     console.log(error)
@@ -56,6 +61,15 @@ try {
 
 try {
     descartarbtn.addEventListener('click',descartar)
+} catch (error) {
+    console.log(error)
+}
+
+try {
+    valortt.addEventListener('click',()=>{
+    valortotal()
+    comprarbtn.removeAttribute('hidden')
+})
 } catch (error) {
     console.log(error)
 }
@@ -122,12 +136,28 @@ function getproducts(){
 
 function direccionfactura(ubication) {
      string=string+`<tr><td>${productos[ubication]['nombre']}</td><td><input type="number" placeholder="Cantidad" class="espcantidad" min=1  max='${productos[ubication]['cantidad']}' autocomplete="off"
-     class="form-control" id="canti${itt}"></td><td>${parseInt(productos[ubication]['precio'])}</td></tr>`
+     class="form-control" id="canti${itt}"></td><td class='esprec'>${parseInt(productos[ubication]['precio'])}</td></tr>`
      ubications.push(ubication)
      espfactura.innerHTML=`${string}`;
      itt=itt+1
      
 }
+
+
+function valortotal() {
+    let cantidades=document.querySelectorAll(`.espcantidad`)
+    let precios=document.querySelectorAll(`.esprec`)
+    let preciototal=0;
+    console.log(cantidades);
+    console.log(precios);
+    for (let i = 0; i < precios.length; i++) {
+       preciototal=preciototal+(parseInt(cantidades[i].value)*parseInt(precios[i].innerText))
+    }
+
+    totalnote.innerHTML=`Valor total:$${preciototal}`
+}
+
+
 function cambiosarreglos(id,ubication) {
     let cantiinput=document.getElementById(`canti${id}`)
     console.log(cantiinput)
@@ -200,4 +230,8 @@ function showInfo(){
 function descartar() {
     string=`<tr class="table-dark"><th>Nombre</th><th>Cantidad</th><th>Precio</th></tr>`
     espfactura.innerHTML=`${string}`
+    totalnote.innerHTML=``;
+    setInterval(() => {
+        location.reload()
+      }, 200); 
 }
