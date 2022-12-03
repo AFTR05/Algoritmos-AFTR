@@ -240,3 +240,7 @@ function descartar() {
         location.reload()
       }, 200); 
 }
+
+let suma=productos.reduce((acumulador, elemento)=>{                    //uso de reduce
+    return acumulador+=elemento.cantidad;                           
+  },0)
